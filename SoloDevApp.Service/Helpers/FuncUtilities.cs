@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace SoloDevApp.Service.Utilities
 {
@@ -184,6 +185,52 @@ namespace SoloDevApp.Service.Utilities
             }
 
             return lowerCase ? builder.ToString().ToLower() : builder.ToString();
+        }
+
+        public static string CheckToken (string accessToken,bool checkQuyen)
+        {
+
+            try
+            {
+                JwtSecurityToken token = new JwtSecurityTokenHandler().ReadJwtToken(accessToken);
+                string hetHanTime = token.Claims.FirstOrDefault(c => c.Type == "exp").Value;
+                string sId = token.Claims.FirstOrDefault(c => c.Type == "id").Value;
+
+                DateTime dNow = DateTime.Now;
+                DateTime dSince = new DateTime(1970, 01, 01);
+                dSince = dNow.Date.AddMilliseconds(double.Parse(hetHanTime + "000"));
+                if (dSince <= dNow)
+                {
+                    return "0";
+                }
+
+                if (checkQuyen)
+                {
+                    string sRole = token.Claims.FirstOrDefault(c => c.Type == "role").Value;
+                    return sRole;
+                }
+
+                return sId;
+            }
+            catch (Exception ex)
+            {
+                return "0";
+            }
+        }
+
+        public static string TokenMessage(string value, bool checkQuyen)
+        {
+
+            if (value == "0")
+                return "token user hết hạn hoặc không đúng";
+            if (checkQuyen)
+            {
+                if (value != "ADMIN" && value != "SPADMIN")
+                    return "User không phải quyền admin";
+            }
+           
+            return "";
+
         }
     }
 }

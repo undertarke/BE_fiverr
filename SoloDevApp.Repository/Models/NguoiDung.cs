@@ -9,9 +9,11 @@
         public string Phone { get; set; }
 
         public string Birthday { get; set; }
+        public string Avatar { get; set; }
         public bool Gender { get; set; }
         public string Role { get; set; }
         public string Skill { get; set; }
         public string Certification { get; set; }
+        public string BookingJob { get; set; }
     }
 }

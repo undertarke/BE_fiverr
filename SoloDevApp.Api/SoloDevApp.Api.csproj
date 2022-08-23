@@ -6,8 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure" />
-    <Folder Include="wwwroot\files\" />
+    <Compile Remove="Infrastructure\**" />
+    <Compile Remove="wwwroot\files\**" />
+    <Content Remove="Infrastructure\**" />
+    <Content Remove="wwwroot\files\**" />
+    <EmbeddedResource Remove="Infrastructure\**" />
+    <EmbeddedResource Remove="wwwroot\files\**" />
+    <None Remove="Infrastructure\**" />
+    <None Remove="wwwroot\files\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +34,5 @@
   <ItemGroup>
     <Content Remove="wwwroot\cmnd\test.jpg" />
     <Content Remove="wwwroot\cmnd\13-04-2020-01-33-28" />
-    <Content Remove="wwwroot\files\23-04-2020-12-24-07-PassServer.rtf" />
   </ItemGroup>
 </Project>

@@ -11,10 +11,12 @@ namespace SoloDevApp.Service.ViewModels
         public string Phone { get; set; }
        
         public string Birthday { get; set; }
+        public string Avatar { get; set; }
         public bool Gender { get; set; }
         public string Role { get; set; }
         public List<string> Skill { get; set; }
         public List<string> Certification { get; set; }
+        public List<string> BookingJob { get; set; }
 
     }
 }

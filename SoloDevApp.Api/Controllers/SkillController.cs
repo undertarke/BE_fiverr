@@ -19,7 +19,7 @@ namespace SoloDevApp.Api.Controllers
         }
 
        [HttpGet]
-        public async Task<IActionResult> Get([FromHeader] string apikey)
+        public async Task<IActionResult> Get()
         {
             return await _skillService.GetAllAsync();
         }

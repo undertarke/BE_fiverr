@@ -40,13 +40,24 @@ namespace SoloDevApp.Api
          
             services.AddTransient<INguoiDungRepository, NguoiDungRepository>();
             services.AddTransient<ISkillRepository, SkillRepository>();
-          
+            services.AddTransient<ILoaiCongViecRepository, LoaiCongViecRepository>();
+            services.AddTransient<IChiTietLoaiCongViecRepository, ChiTietLoaiCongViecRepository>();
+            services.AddTransient<ICongViecRepository, CongViecRepository>();
+            services.AddTransient<IThueCongViecRepository, ThueCongViecRepository>();
+            services.AddTransient<IBinhLuanRepository, BinhLuanRepository>();
+
 
             // ==================== SERVICE ====================
-           
+
             services.AddTransient<INguoiDungService, NguoiDungService>();
             services.AddTransient<ISkillService, SkillService>();
-            
+            services.AddTransient<IFileService, FileService>();
+            services.AddTransient<ILoaiCongViecService, LoaiCongViecService>();
+            services.AddTransient<IChiTietLoaiCongViecService, ChiTietLoaiCongViecService>();
+            services.AddTransient<ICongViecService, CongViecService>();
+            services.AddTransient<IThueCongViecService, ThueCongViecService>();
+            services.AddTransient<IBinhLuanService, BinhLuanService>();
+
 
             // ==================== HELPER ====================
 

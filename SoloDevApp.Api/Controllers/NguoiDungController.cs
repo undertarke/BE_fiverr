@@ -1,12 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using SoloDevApp.Api.Filters;
+using SoloDevApp.Repository.Models;
 using SoloDevApp.Service.Services;
+using SoloDevApp.Service.Utilities;
 using SoloDevApp.Service.ViewModels;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SoloDevApp.Api.Controllers
 {
-    [Route("api/nguoidung")]
+
+    [Route("api/users")]
     [ApiController]
     [ApiKeyAuth("")]
     public class NguoiDungController : ControllerBase
@@ -18,42 +24,64 @@ namespace SoloDevApp.Api.Controllers
             _nguoiDungService = nguoiDungService;
         }
 
-        [HttpGet("layTatCaNguoiDung")]
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return await _nguoiDungService.GetAllAsync();
+            return await _nguoiDungService.LayTatCa();
         }
 
-        [HttpGet("layNguoiDungTheoMa/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            return await _nguoiDungService.GetByIdAsync(id);
+            return await _nguoiDungService.LayChiTiet(id);
         }
 
  
 
-        [HttpPost("taoNguoiDung")]
-        public async Task<IActionResult> Post([FromBody] NguoiDungViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] ThongTinNguoiDung model)
         {
-            return await _nguoiDungService.InsertAsync(model);
+          
+            return await _nguoiDungService.ThemNguoiDung(model);
         }
 
-        [HttpPut("capNhatNguoiDung/{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] NguoiDungViewModel model)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] CapNhatNguoiDung model)
         {
-            return await _nguoiDungService.UpdateAsync(id, model);
+            if (id == 1)
+                return new ResponseEntity(403, "Không có quyền");
+
+            return await _nguoiDungService.SuaNguoiDung(id, model);
         }
 
-        [HttpDelete(("xoaNguoiDung"))]
+        [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
+
+            if (id == 1)
+                return new ResponseEntity(403, "Không có quyền");
+
             return await _nguoiDungService.DeleteByIdAsync(id);
+
         }
 
-        [HttpGet("timKiem/{TenNguoiDung}")]
+        [HttpGet("pagination-search/{TenNguoiDung}")]
         public async Task<IActionResult> GetByName(string TenNguoiDung)
         {
             return await _nguoiDungService.GetByName(TenNguoiDung);
+        }
+
+        [HttpPost("upload-avatar")]
+        public async Task<IActionResult> UploadAvatar([FromHeader] string token,[FromForm] Photo files)
+        {
+
+            string nguoiDungId = FuncUtilities.CheckToken(token,false);
+            string sMess = FuncUtilities.TokenMessage(nguoiDungId,false);
+            if (sMess != "")
+                return new ResponseEntity(403, sMess);
+
+            return await _nguoiDungService.UploadAvatar(nguoiDungId, files);
+
         }
     }
 }

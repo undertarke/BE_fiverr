@@ -152,7 +152,7 @@ namespace SoloDevApp.Repository.Infrastructure
 
         public virtual async Task<T> GetByIdAsync(dynamic id)
         {
-            var query = $"SELECT * FROM {_table} WHERE Id = '{id}' AND DaXoa = 0";
+            var query = $"SELECT * FROM {_table} WHERE Id = '{id}' ";
             using (var conn = CreateConnection())
             {
                 try
@@ -312,7 +312,7 @@ namespace SoloDevApp.Repository.Infrastructure
                 values = values.Remove(values.Length - 2, 2);
 
                 var query = $"INSERT INTO {_table} ({columns}) VALUES ({values});";
-                query += $"SELECT TOP 1 * FROM {_table} ORDER BY NgayTao DESC;";
+                query += $"SELECT TOP 1 * FROM {_table} ORDER BY Id DESC;";
                 return query;
             }
             catch (Exception ex)
@@ -351,7 +351,8 @@ namespace SoloDevApp.Repository.Infrastructure
             var query = $"SELECT TOP 1 * FROM {_table} WHERE ";
             foreach (var element in list) query += $"{element.Key} = N'{element.Value}' AND ";
 
-            query += "DaXoa = 0 ORDER BY NgayTao DESC";
+            query = query.Substring(0, query.Length - 4);
+
             return query;
         }
     }

@@ -33,7 +33,7 @@ namespace SoloDevApp.Api.Filters
             }
             operation.Parameters.Add(new NonBodyParameter
             {
-                Name = "TokenCybersoft",
+                Name = "tokenCybersoft",
                 In = "header",
                 Description = "Nhập token cybersoft",
                 Required = true,

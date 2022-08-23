@@ -30,7 +30,7 @@ namespace SoloDevApp.Api.Filters
             try
             {
 
-                var accessToken = filterContext.HttpContext.Request.Headers["TokenCybersoft"];
+                var accessToken = filterContext.HttpContext.Request.Headers["tokenCybersoft"];
                 JwtSecurityToken token = new JwtSecurityTokenHandler().ReadJwtToken(accessToken);
                 string hetHanTime = token.Claims.FirstOrDefault(c => c.Type == "HetHanString").Value;
 
