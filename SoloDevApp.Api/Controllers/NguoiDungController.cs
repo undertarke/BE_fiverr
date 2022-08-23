@@ -29,7 +29,11 @@ namespace SoloDevApp.Api.Controllers
         {
             return await _nguoiDungService.LayTatCa();
         }
-
+        [HttpGet("phan-trang-tim-kiem")]
+        public async Task<IActionResult> GetPaging(int pageIndex, int pageSize, string keyword)
+        {
+            return await _nguoiDungService.GetPagingAsync(pageIndex, pageSize, keyword == null ? keyword : " Name LIKE N'%" + keyword + "%'");
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -65,7 +69,7 @@ namespace SoloDevApp.Api.Controllers
 
         }
 
-        [HttpGet("pagination-search/{TenNguoiDung}")]
+        [HttpGet("search/{TenNguoiDung}")]
         public async Task<IActionResult> GetByName(string TenNguoiDung)
         {
             return await _nguoiDungService.GetByName(TenNguoiDung);
@@ -79,6 +83,9 @@ namespace SoloDevApp.Api.Controllers
             string sMess = FuncUtilities.TokenMessage(nguoiDungId,false);
             if (sMess != "")
                 return new ResponseEntity(403, sMess);
+
+            if (int.Parse(nguoiDungId) == 1)
+                return new ResponseEntity(403, "Không có quyền");
 
             return await _nguoiDungService.UploadAvatar(nguoiDungId, files);
 

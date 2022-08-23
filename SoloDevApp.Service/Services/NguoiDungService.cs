@@ -122,9 +122,16 @@ namespace SoloDevApp.Service.Services
         {
             try
             {
+                List<KeyValuePair<string, dynamic>> columns = new List<KeyValuePair<string, dynamic>>();
+                columns.Add(new KeyValuePair<string, dynamic>("Email", model.Email));
+                NguoiDung checkNguoiDung = await _nguoiDungRepository.GetSingleAsync(columns);
+                if(checkNguoiDung != null)
+                    return new ResponseEntity(StatusCodeConstants.BAD_REQUEST, "Email đã tồn tại !");
+
                 NguoiDung nguoiDung = new NguoiDung();
                 nguoiDung.Name = model.Name;
                 nguoiDung.Email = model.Email;
+                nguoiDung.Phone = model.Phone;
                 nguoiDung.Password = model.Password;
                 nguoiDung.Birthday = model.Birthday;
                 nguoiDung.Gender = model.Gender;
@@ -201,9 +208,16 @@ namespace SoloDevApp.Service.Services
         {
             try
             {
+                List<KeyValuePair<string, dynamic>> columns = new List<KeyValuePair<string, dynamic>>();
+                columns.Add(new KeyValuePair<string, dynamic>("Email", model.Email));
+                NguoiDung checkNguoiDung = await _nguoiDungRepository.GetSingleAsync(columns);
+                if (checkNguoiDung != null)
+                    return new ResponseEntity(StatusCodeConstants.BAD_REQUEST, "Email đã tồn tại !");
+
                 NguoiDung nguoiDung = new NguoiDung();
                 nguoiDung.Name = model.Name;
                 nguoiDung.Email = model.Email;
+                nguoiDung.Phone= model.Phone;
                 nguoiDung.Password = model.Password;
                 nguoiDung.Birthday = model.Birthday;
                 nguoiDung.Gender = model.Gender;
@@ -231,8 +245,16 @@ namespace SoloDevApp.Service.Services
                 if(nguoiDung == null)
                     return new ResponseEntity(StatusCodeConstants.BAD_REQUEST, "Người dùng không tồn tại !");
 
+                List<KeyValuePair<string, dynamic>> columns = new List<KeyValuePair<string, dynamic>>();
+                columns.Add(new KeyValuePair<string, dynamic>("Email", model.Email));
+                NguoiDung checkNguoiDung = await _nguoiDungRepository.GetSingleAsync(columns);
+                if (checkNguoiDung != null && checkNguoiDung.Id != nguoiDung.Id)
+                    return new ResponseEntity(StatusCodeConstants.BAD_REQUEST, "Email đã tồn tại !");
+
                 nguoiDung.Name = model.Name;
                 nguoiDung.Email = model.Email;
+                nguoiDung.Phone = model.Phone;
+
                 nguoiDung.Birthday = model.Birthday;
                 nguoiDung.Gender = model.Gender;
                 nguoiDung.Role = "USER";

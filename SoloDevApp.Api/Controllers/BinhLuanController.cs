@@ -46,8 +46,8 @@ namespace SoloDevApp.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put([FromHeader] string token, int id, [FromBody] BinhLuanViewModel model)
         {
-            string nguoiDungId = FuncUtilities.CheckToken(token, false);
-            string sMess = FuncUtilities.TokenMessage(nguoiDungId, false);
+            string nguoiDungId = FuncUtilities.CheckToken(token, true);
+            string sMess = FuncUtilities.TokenMessage(nguoiDungId, true);
             if (sMess != "")
                 return new ResponseEntity(403, sMess);
 
@@ -58,25 +58,21 @@ namespace SoloDevApp.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromHeader] string token, int id)
         {
-            string nguoiDungId = FuncUtilities.CheckToken(token, false);
-            string sMess = FuncUtilities.TokenMessage(nguoiDungId, false);
+            string nguoiDungId = FuncUtilities.CheckToken(token, true);
+            string sMess = FuncUtilities.TokenMessage(nguoiDungId, true);
             if (sMess != "")
                 return new ResponseEntity(403, sMess);
 
             return await _binhLuanService.DeleteByIdAsync(id);
         }
 
-      /*  [HttpGet("lay-danh-sach-da-thue")]
-        public async Task<IActionResult> GetCongViecDaThue([FromHeader] string token)
+        [HttpGet("lay-binh-luan-theo-cong-viec/{MaCongViec}")]
+        public async Task<IActionResult> GetBinhLuanTheoCongViec(string MaCongViec)
         {
-            string nguoiDungId = FuncUtilities.CheckToken(token, false);
-            string sMess = FuncUtilities.TokenMessage(nguoiDungId, false);
-            if (sMess != "")
-                return new ResponseEntity(403, sMess);
 
-            return await _BinhLuanService.GetCongViecDaThue(nguoiDungId);
-        }*/
+            return await _binhLuanService.GetBinhLuanTheoCongViec(MaCongViec);
+        }
 
-        
+
     }
 }

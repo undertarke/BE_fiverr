@@ -23,7 +23,7 @@ namespace SoloDevApp.Service.Services
 {
     public interface IBinhLuanService : IService<BinhLuan, BinhLuanViewModel>
     {
-        // Task<ResponseEntity> GetCongViecDaThue(string nguoiDungId);
+         Task<ResponseEntity> GetBinhLuanTheoCongViec(string MaCongViec);
 
     }
 
@@ -68,26 +68,36 @@ namespace SoloDevApp.Service.Services
 
         }
 
-       /* public async Task<ResponseEntity> HoanThanhCongViec(string MaBinhLuan)
+        public async Task<ResponseEntity> GetBinhLuanTheoCongViec(string MaCongViec)
         {
             try
             {
-                BinhLuan BinhLuan = await _BinhLuanRepository.GetByIdAsync(int.Parse(MaBinhLuan));
+                IEnumerable<BinhLuan> dsBinhLuan = await _binhLuanRepository.GetMultiByConditionAsync("MaCongViec", MaCongViec);
 
-                if(BinhLuan == null)
-                    return new ResponseEntity(StatusCodeConstants.BAD_REQUEST, "Không có công việc nào được thuê");
+               List<GetBinhLuanView> lstBinhLuanView = new List<GetBinhLuanView>();
+                foreach (BinhLuan binhLuan in dsBinhLuan)
+                {
+                    NguoiDung nguoiDung = await _nguoiDungRepository.GetByIdAsync(binhLuan.MaNguoiBinhLuan);
 
-                BinhLuan.HoanThanh = true;
-                await _BinhLuanRepository.UpdateAsync(BinhLuan.Id, BinhLuan);
 
-                return new ResponseEntity(StatusCodeConstants.OK, BinhLuan);
+                    GetBinhLuanView binhLuanVew = new GetBinhLuanView();
+                    binhLuanVew.NoiDung=binhLuan.NoiDung;
+                    binhLuanVew.SaoBinhLuan=binhLuan.SaoBinhLuan;   
+                    binhLuanVew.NgayBinhLuan= binhLuan.NgayBinhLuan;
+                    binhLuanVew.TenNguoiBinhLuan = nguoiDung.Name;
+                    binhLuanVew.Avatar=nguoiDung.Avatar;
+
+                    lstBinhLuanView.Add(binhLuanVew);
+                }
+
+                return new ResponseEntity(StatusCodeConstants.OK, lstBinhLuanView);
             }
             catch
             {
                 return new ResponseEntity(StatusCodeConstants.ERROR_SERVER);
             }
         }
-        */
+
 
     }
 }
