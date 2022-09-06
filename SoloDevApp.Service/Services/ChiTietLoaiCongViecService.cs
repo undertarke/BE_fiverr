@@ -40,7 +40,7 @@ namespace SoloDevApp.Service.Services
     {
         private readonly IChiTietLoaiCongViecRepository _chiTietLoaiCongViecRepository;
         private readonly IFileService _fileService;
-        private readonly string URL_MAIN = "https://localhost:5001";
+        private readonly IAppSettings _appSettings;
 
         public ChiTietLoaiCongViecService(IChiTietLoaiCongViecRepository chiTietLoaiCongViecRepository, 
             IMapper mapper,
@@ -51,6 +51,7 @@ namespace SoloDevApp.Service.Services
         {
             _chiTietLoaiCongViecRepository = chiTietLoaiCongViecRepository;
             _fileService = fileService;
+            _appSettings = appSettings;
         }
         public async Task<ResponseEntity> UploadHinhNhomLoai(int MaNhomLoaiCongViec, Photo file)
         {
@@ -75,7 +76,7 @@ namespace SoloDevApp.Service.Services
 
                 filePath = await _fileService.SaveFileAsync(file.formFile, "images");
 
-                chiTietLoaiCongViec.HinhAnh = URL_MAIN + filePath;
+                chiTietLoaiCongViec.HinhAnh = _appSettings.UrlMain + filePath;
                 await _chiTietLoaiCongViecRepository.UpdateAsync(chiTietLoaiCongViec.Id, chiTietLoaiCongViec);
 
 

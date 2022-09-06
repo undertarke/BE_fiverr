@@ -40,7 +40,6 @@ namespace SoloDevApp.Service.Services
         private readonly INguoiDungRepository _nguoiDungRepository;
         private readonly IAppSettings _appSettings;
         private readonly IFileService _fileService;
-        private readonly string URL_MAIN = "https://localhost:5001";
 
         public NguoiDungService(INguoiDungRepository nguoiDungRepository, 
             IMapper mapper,
@@ -76,7 +75,7 @@ namespace SoloDevApp.Service.Services
                
                filePath = await _fileService.SaveFileAsync(file.formFile, "avatar");
 
-                nguoiDung.Avatar = URL_MAIN + filePath;
+                nguoiDung.Avatar = _appSettings.UrlMain + filePath;
                 await _nguoiDungRepository.UpdateAsync(nguoiDung.Id, nguoiDung);
 
                 return new ResponseEntity(StatusCodeConstants.OK, nguoiDung);

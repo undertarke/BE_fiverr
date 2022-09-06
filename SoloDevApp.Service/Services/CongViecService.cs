@@ -41,7 +41,6 @@ namespace SoloDevApp.Service.Services
 
         private readonly IAppSettings _appSettings;
         private readonly IFileService _fileService;
-        private readonly string URL_MAIN = "https://localhost:5001";
 
         public CongViecService(ICongViecRepository congViecRepository,
             ILoaiCongViecRepository loaiCongViecRepository,
@@ -86,7 +85,7 @@ namespace SoloDevApp.Service.Services
 
                 filePath = await _fileService.SaveFileAsync(file.formFile, "images");
 
-                congViec.HinhAnh = URL_MAIN + filePath;
+                congViec.HinhAnh = _appSettings.UrlMain + filePath;
                 await _congViecRepository.UpdateAsync(congViec.Id, congViec);
 
                 return new ResponseEntity(StatusCodeConstants.OK, congViec);

@@ -40,7 +40,6 @@ namespace SoloDevApp.Service.Services
 
         private readonly IAppSettings _appSettings;
         private readonly IFileService _fileService;
-        private readonly string URL_MAIN = "https://localhost:5001";
 
         public BinhLuanService(IBinhLuanRepository binhLuanRepository,
             ILoaiCongViecRepository loaiCongViecRepository,
