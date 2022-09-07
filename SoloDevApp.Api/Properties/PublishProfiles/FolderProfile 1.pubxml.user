@@ -6,6 +6,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\source\BE_fiverr\SoloDevApp.Api\bin/Release/netcoreapp2.1/publish</_PublishTargetUrl>
-    <History>True|2022-09-05T09:14:27.3079225Z;True|2022-08-27T20:42:56.5821884+07:00;</History>
+    <History>True|2022-09-07T07:00:17.8216668Z;True|2022-09-05T16:14:27.3079225+07:00;True|2022-08-27T20:42:56.5821884+07:00;</History>
   </PropertyGroup>
 </Project>
