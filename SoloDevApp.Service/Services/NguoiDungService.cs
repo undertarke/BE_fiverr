@@ -220,7 +220,7 @@ namespace SoloDevApp.Service.Services
                 nguoiDung.Password = model.Password;
                 nguoiDung.Birthday = model.Birthday;
                 nguoiDung.Gender = model.Gender;
-                nguoiDung.Role = "USER";
+                nguoiDung.Role = model.Role;
                 nguoiDung.Skill = JsonConvert.SerializeObject(model.Skill);
                 nguoiDung.Certification = JsonConvert.SerializeObject(model.Certification);
                 nguoiDung.BookingJob = "[]";
@@ -256,7 +256,7 @@ namespace SoloDevApp.Service.Services
 
                 nguoiDung.Birthday = model.Birthday;
                 nguoiDung.Gender = model.Gender;
-                nguoiDung.Role = "USER";
+                nguoiDung.Role = model.Role;
                 nguoiDung.Skill = JsonConvert.SerializeObject(model.Skill);
                 nguoiDung.Certification = JsonConvert.SerializeObject(model.Certification);
                 nguoiDung.BookingJob = "[]";
