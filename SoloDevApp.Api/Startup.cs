@@ -82,7 +82,7 @@ namespace SoloDevApp.Api
             services.AddSwaggerGen(c =>
             {
                 c.OperationFilter<Filters.AuthorizationHeaderParameterOperationFilter>();
-                c.SwaggerDoc("v1", new Info { Title = "SOLO DEV API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Fiverr", Version = "v1" });
             });
 
             // ==================== CORS ORIGIN ====================
@@ -202,7 +202,7 @@ namespace SoloDevApp.Api
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SOLO DEV API VERSION 01");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fiverr");
                 c.RoutePrefix = "swagger";
                 
             });

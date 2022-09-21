@@ -1,8 +1,5 @@
 D:\source\BE_fiverr\SoloDevApp.Api\obj\Release\netcoreapp2.1\PubTmp\Out\wwwroot\.DS_Store
 D:\source\BE_fiverr\SoloDevApp.Api\obj\Release\netcoreapp2.1\PubTmp\Out\wwwroot\avatar\.DS_Store
-D:\source\BE_fiverr\SoloDevApp.Api\obj\Release\netcoreapp2.1\PubTmp\Out\wwwroot\avatar\05-09-2022-04-13-40-tree-736885__480.jpg
-D:\source\BE_fiverr\SoloDevApp.Api\obj\Release\netcoreapp2.1\PubTmp\Out\wwwroot\avatar\23-08-2022-02-38-18-tree-736885__480.jpg
-D:\source\BE_fiverr\SoloDevApp.Api\obj\Release\netcoreapp2.1\PubTmp\Out\wwwroot\avatar\23-08-2022-02-42-03-tree-736885__480.jpg
 D:\source\BE_fiverr\SoloDevApp.Api\obj\Release\netcoreapp2.1\PubTmp\Out\wwwroot\images\.DS_Store
 D:\source\BE_fiverr\SoloDevApp.Api\obj\Release\netcoreapp2.1\PubTmp\Out\appsettings.Development.json
 D:\source\BE_fiverr\SoloDevApp.Api\obj\Release\netcoreapp2.1\PubTmp\Out\appsettings.json
