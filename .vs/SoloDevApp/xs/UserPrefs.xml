@@ -1,0 +1,41 @@
+﻿<Properties StartupConfiguration="{747AF7C0-35C8-46B6-9674-9583F1242B75}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SoloDevApp.Api/bin/Release/netcoreapp2.1/publish/Dockerfile">
+    <Files>
+      <File FileName="SoloDevApp.Api/Controllers/BinhLuanController.cs" Line="73" Column="52" />
+      <File FileName="SoloDevApp.Service/Services/BinhLuanService.cs" Line="93" Column="31" />
+      <File FileName="SoloDevApp.Api/Controllers/CongViecController.cs" Line="138" Column="69" />
+      <File FileName="SoloDevApp.Service/Services/CongViecService.cs" Line="189" Column="80" />
+      <File FileName="SoloDevApp.Service/Services/ChiTietLoaiCongViecService.cs" Line="92" Column="1" />
+      <File FileName="SoloDevApp.Api/bin/Release/netcoreapp2.1/publish/Dockerfile" Line="12" Column="44" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SoloDevApp" expanded="True">
+            <Node name="SoloDevApp.Api" expanded="True">
+              <Node name="Controllers" expanded="True" selected="True" />
+            </Node>
+            <Node name="SoloDevApp.Repository" expanded="True">
+              <Node name="Infrastructure" expanded="True" />
+              <Node name="Models" expanded="True" />
+            </Node>
+            <Node name="SoloDevApp.Service" expanded="True">
+              <Node name="Services" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.SoloDevApp.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

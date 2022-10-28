@@ -78,15 +78,21 @@ namespace SoloDevApp.Service.Services
                 {
                     NguoiDung nguoiDung = await _nguoiDungRepository.GetByIdAsync(binhLuan.MaNguoiBinhLuan);
 
+                    if (nguoiDung != null)
+                    {
+                        GetBinhLuanView binhLuanVew = new GetBinhLuanView();
+                        binhLuanVew.NoiDung = binhLuan.NoiDung;
+                        binhLuanVew.SaoBinhLuan = binhLuan.SaoBinhLuan;
+                        binhLuanVew.NgayBinhLuan = binhLuan.NgayBinhLuan;
+                        binhLuanVew.TenNguoiBinhLuan = nguoiDung.Name;
+                        binhLuanVew.Avatar = nguoiDung.Avatar;
 
-                    GetBinhLuanView binhLuanVew = new GetBinhLuanView();
-                    binhLuanVew.NoiDung=binhLuan.NoiDung;
-                    binhLuanVew.SaoBinhLuan=binhLuan.SaoBinhLuan;   
-                    binhLuanVew.NgayBinhLuan= binhLuan.NgayBinhLuan;
-                    binhLuanVew.TenNguoiBinhLuan = nguoiDung.Name;
-                    binhLuanVew.Avatar=nguoiDung.Avatar;
-
-                    lstBinhLuanView.Add(binhLuanVew);
+                        lstBinhLuanView.Add(binhLuanVew);
+                    }else
+                    {
+                        await _binhLuanRepository.DeleteByIdAsync(binhLuan.Id);
+                    }
+                  
                 }
 
                 return new ResponseEntity(StatusCodeConstants.OK, lstBinhLuanView);

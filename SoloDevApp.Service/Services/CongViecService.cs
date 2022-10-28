@@ -111,18 +111,26 @@ namespace SoloDevApp.Service.Services
                 ChiTietLoaiCongViec chiTietLoai = dsChiTietLoai.FirstOrDefault(n => n.Id == congViec.MaChiTietLoaiCongViec);
                 NguoiDung nguoiDung = await _nguoiDungRepository.GetByIdAsync(congViec.NguoiTao);
 
-                GetCongViecView congViecView = new GetCongViecView();
-                congViecView.Id = congViec.Id;
-                congViecView.CongViec = _mapper.Map<CongViecViewModel>(congViec);
+                if (nguoiDung != null)
+                {
 
-                congViecView.TenLoaiCongViec = LayTenChiTietLoaiTheoMaSub(dsLoaiCongViec, dsChiTietLoai, chiTietLoai.Id);
-                congViecView.TenNhomChiTietLoai = LayTenChiTietLoaiTheoMaSub(null, dsChiTietLoai, chiTietLoai.Id);
-                congViecView.TenChiTietLoai = chiTietLoai.TenChiTiet;
+                    GetCongViecView congViecView = new GetCongViecView();
+                    congViecView.Id = congViec.Id;
+                    congViecView.CongViec = _mapper.Map<CongViecViewModel>(congViec);
 
-                congViecView.TenNguoiTao = nguoiDung.Name;
-                congViecView.Avatar = nguoiDung.Avatar;
+                    congViecView.TenLoaiCongViec = LayTenChiTietLoaiTheoMaSub(dsLoaiCongViec, dsChiTietLoai, chiTietLoai.Id);
+                    congViecView.TenNhomChiTietLoai = LayTenChiTietLoaiTheoMaSub(null, dsChiTietLoai, chiTietLoai.Id);
+                    congViecView.TenChiTietLoai = chiTietLoai.TenChiTiet;
 
-                lstCongViec.Add(congViecView);
+                    congViecView.TenNguoiTao = nguoiDung.Name;
+                    congViecView.Avatar = nguoiDung.Avatar;
+
+                    lstCongViec.Add(congViecView);
+                }
+                else
+                {
+                    await _congViecRepository.DeleteByIdAsync(congViec.Id);
+                }
 
 
                 return new ResponseEntity(StatusCodeConstants.OK, lstCongViec);
@@ -151,20 +159,36 @@ namespace SoloDevApp.Service.Services
                 foreach(CongViec congViec in dsCongViec)
                 {
                     ChiTietLoaiCongViec chiTietLoai = dsChiTietLoai.FirstOrDefault(n=>n.Id== congViec.MaChiTietLoaiCongViec);
-                    NguoiDung nguoiDung = await _nguoiDungRepository.GetByIdAsync(congViec.NguoiTao);
+                    if (chiTietLoai != null)
+                    {
+                        NguoiDung nguoiDung = await _nguoiDungRepository.GetByIdAsync(congViec.NguoiTao);
 
-                    GetCongViecView congViecView = new GetCongViecView();
-                    congViecView.Id = congViec.Id;
-                    congViecView.CongViec = _mapper.Map<CongViecViewModel>(congViec);
+                        if (nguoiDung != null)
+                        {
+                            GetCongViecView congViecView = new GetCongViecView();
+                            congViecView.Id = congViec.Id;
+                            congViecView.CongViec = _mapper.Map<CongViecViewModel>(congViec);
 
-                    congViecView.TenLoaiCongViec = LayTenChiTietLoaiTheoMaSub(dsLoaiCongViec, dsChiTietLoai, chiTietLoai.Id);
-                    congViecView.TenNhomChiTietLoai = LayTenChiTietLoaiTheoMaSub(null,dsChiTietLoai, chiTietLoai.Id);
-                    congViecView.TenChiTietLoai = chiTietLoai.TenChiTiet;
+                            congViecView.TenLoaiCongViec = LayTenChiTietLoaiTheoMaSub(dsLoaiCongViec, dsChiTietLoai, chiTietLoai.Id);
+                            congViecView.TenNhomChiTietLoai = LayTenChiTietLoaiTheoMaSub(null, dsChiTietLoai, chiTietLoai.Id);
+                            congViecView.TenChiTietLoai = chiTietLoai.TenChiTiet;
 
-                    congViecView.TenNguoiTao = nguoiDung.Name;
-                    congViecView.Avatar=nguoiDung.Avatar;
+                            congViecView.TenNguoiTao = nguoiDung.Name;
+                            congViecView.Avatar = nguoiDung.Avatar;
 
-                    lstCongViec.Add(congViecView);
+                            lstCongViec.Add(congViecView);
+                        }
+                        else
+                        {
+                            await _congViecRepository.DeleteByIdAsync(congViec.Id);
+                        }
+
+                    }
+                    else
+                    {
+                        await _congViecRepository.DeleteByIdAsync(congViec.Id);
+                    }
+                   
                 }
                
                 return new ResponseEntity(StatusCodeConstants.OK, lstCongViec);
