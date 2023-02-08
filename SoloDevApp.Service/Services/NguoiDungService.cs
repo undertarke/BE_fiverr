@@ -183,6 +183,8 @@ namespace SoloDevApp.Service.Services
                     nguoiDungNew.Id = nguoiDung.Id;
                     nguoiDungNew.Name = nguoiDung.Name;
                     nguoiDungNew.Email = nguoiDung.Email;
+                    nguoiDungNew.Phone = nguoiDung.Phone;
+                    nguoiDungNew.Avatar = nguoiDung.Avatar;
                     nguoiDungNew.Password = "";
                     nguoiDungNew.Birthday = nguoiDung.Birthday;
                     nguoiDungNew.Gender = nguoiDung.Gender;
