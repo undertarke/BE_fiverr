@@ -5,7 +5,7 @@ namespace SoloDevApp.Service.ViewModels
     //dung cho method GET binh luan
     public class GetBinhLuanView
     {
-       // public int Id { get; set; }
+        public int Id { get; set; }
         public string NgayBinhLuan { get; set; }
         public string NoiDung { get; set; }
         public int SaoBinhLuan { get; set; }

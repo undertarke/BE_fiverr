@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{747AF7C0-35C8-46B6-9674-9583F1242B75}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SoloDevApp.Service/Services/NguoiDungService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SoloDevApp.Service/Services/BinhLuanService.cs">
     <Files>
-      <File FileName="SoloDevApp.Api/Controllers/NguoiDungController.cs" Line="30" Column="47" />
-      <File FileName="SoloDevApp.Service/Services/NguoiDungService.cs" Line="195" Column="1" />
+      <File FileName="SoloDevApp.Api/Controllers/BinhLuanController.cs" Line="73" Column="50" />
+      <File FileName="SoloDevApp.Service/Services/BinhLuanService.cs" Line="21" Column="1" />
+      <File FileName="SoloDevApp.Service/ViewModels/GetBinhLuanView.cs" Line="9" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -30,9 +30,10 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.SoloDevApp.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.SoloDevApp.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
 </Properties>

@@ -81,6 +81,7 @@ namespace SoloDevApp.Service.Services
                     if (nguoiDung != null)
                     {
                         GetBinhLuanView binhLuanVew = new GetBinhLuanView();
+                        binhLuanVew.Id = binhLuan.Id;
                         binhLuanVew.NoiDung = binhLuan.NoiDung;
                         binhLuanVew.SaoBinhLuan = binhLuan.SaoBinhLuan;
                         binhLuanVew.NgayBinhLuan = binhLuan.NgayBinhLuan;
