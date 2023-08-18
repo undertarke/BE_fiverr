@@ -127,6 +127,16 @@ namespace SoloDevApp.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromHeader] string token, int id)
         {
+
+
+            List<int> lstCheck = JsonConvert.DeserializeObject<List<int>>("[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]");
+
+            if (lstCheck.Find(n => n == id) != 0)
+            {
+                return new ResponseEntity(403, "Không có quyền");
+
+            }
+
             string nguoiDungId = FuncUtilities.CheckToken(token, true);
             string sMess = FuncUtilities.TokenMessage(nguoiDungId, true);
             if (sMess != "")

@@ -1,9 +1,13 @@
 ﻿<Properties StartupConfiguration="{747AF7C0-35C8-46B6-9674-9583F1242B75}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SoloDevApp.Service/Services/BinhLuanService.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SoloDevApp.Api/Controllers/ChiTietLoaiCongViecController.cs">
     <Files>
       <File FileName="SoloDevApp.Api/Controllers/BinhLuanController.cs" Line="73" Column="50" />
       <File FileName="SoloDevApp.Service/Services/BinhLuanService.cs" Line="21" Column="1" />
       <File FileName="SoloDevApp.Service/ViewModels/GetBinhLuanView.cs" Line="9" Column="28" />
+      <File FileName="SoloDevApp.Api/Controllers/CongViecController.cs" Line="100" Column="1" />
+      <File FileName="SoloDevApp.Api/Controllers/ChiTietLoaiCongViecController.cs" Line="132" Column="157" />
+      <File FileName="SoloDevApp.Service/Helpers/FuncUtilities.cs" Line="234" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,6 +22,7 @@
             </Node>
             <Node name="SoloDevApp.Service" expanded="True">
               <Node name="Helpers" expanded="True" />
+              <Node name="Infrastructure" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="ViewModels" expanded="True" />
             </Node>
@@ -29,11 +34,12 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.SoloDevApp.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SoloDevApp.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/macbookpro/Documents/source/BE_fiverr/SoloDevApp.Service/Helpers/FuncUtilities.cs" relfile="SoloDevApp.Service/Helpers/FuncUtilities.cs" line="222" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
